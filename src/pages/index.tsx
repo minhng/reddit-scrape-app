@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react'
 import { Formik, Form } from 'formik'
-import { Button, ButtonGroup } from '@chakra-ui/react';
+import { Button, ButtonGroup, Flex, Box } from '@chakra-ui/react';
 import { Wrapper } from '../components/Wrapper';
 import { MyInput } from '../components/MyInput';
 import axios from 'axios';
@@ -48,7 +48,7 @@ const Index: React.FC<mainProps> = ({ }) => {
     setNewest([]);
   };
   return (
-    <Wrapper footer={true}>
+    <Flex flexDirection="column" minH="100vh" h="100%" justifyContent="space-between">
       <Wrapper variant='small'>
         <Formik
           initialValues={{ name: "" }}
@@ -80,9 +80,15 @@ const Index: React.FC<mainProps> = ({ }) => {
           )}
         </Formik>
       </Wrapper>
-      <MyTable title="Top 10 hottest posts" columns={columns} data={hottest}></MyTable>
-      <MyTable title="Top 10 newest posts" columns={columns} data={newest}></MyTable>
-    </Wrapper>
+      <Wrapper>
+        <MyTable title="Top 10 hottest posts" columns={columns} data={hottest}></MyTable>
+        <MyTable title="Top 10 newest posts" columns={columns} data={newest}></MyTable>
+      </Wrapper>
+      <Box mt={20} mb={8} d="flex" justifyContent="center" w="100%"
+        fontSize="xs" fontWeight="semibold" color="orange">
+        Developed using React & Chakra UI. Deployed on AWS
+      </Box>
+    </Flex>
   );
 }
 
